@@ -1,9 +1,8 @@
 import s from './style.module.css';
 
-const LayoutBlock = (props) => {
-
+const LayoutBlock = ({title, colorBg, urlBg, children}) => {
     const sectionStyle = {
-        backgroundImage: `url(${props.urlBg})`
+        backgroundImage: `url(${urlBg})`
     };
     
     return (
@@ -11,11 +10,11 @@ const LayoutBlock = (props) => {
             <div className={s.wrapper}>
                 <article>
                     <div className={s.title}>
-                        <h3 style={props.colorBg}>{props.title}</h3>
+                        <h3 style={colorBg}>{title}</h3>
                         <span className={s.separator}></span>
                     </div>
                     <div className={[s.desc, s.full].join(' ')}>
-                        <p>{props.descr}</p>
+                        {children}
                     </div>
                 </article>
             </div>

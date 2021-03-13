@@ -4,13 +4,146 @@ import Footer from './components/FooterBlock';
 
 import img1 from './assets/bg1.jpg';
 import img2 from './assets/bg2.jpg';
+import './App.css';
+import PockemonCard from './components/PockemonCard';
 
+
+const POCKEMONS = [
+    {
+      "abilities": [
+        "keen-eye",
+        "tangled-feet",
+        "big-pecks"
+      ],
+      "stats": {
+        "hp": 63,
+        "attack": 60,
+        "defense": 55,
+        "special-attack": 50,
+        "special-defense": 50,
+        "speed": 71
+      },
+      "type": "flying",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png",
+      "name": "pidgeotto",
+      "base_experience": 122,
+      "height": 11,
+      "id": 17,
+      "values": {
+        "top": "A",
+        "right": 2,
+        "bottom": 7,
+        "left": 5
+      }
+    },
+    {
+      "abilities": [
+        "intimidate",
+        "shed-skin",
+        "unnerve"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 95,
+        "defense": 69,
+        "special-attack": 65,
+        "special-defense": 79,
+        "speed": 80
+      },
+      "type": "poison",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png",
+      "name": "arbok",
+      "base_experience": 157,
+      "height": 35,
+      "id": 24,
+      "values": {
+        "top": 5,
+        "right": 9,
+        "bottom": "A",
+        "left": "A"
+      }
+    },
+    {
+      "abilities": [
+        "static",
+        "lightning-rod"
+      ],
+      "stats": {
+        "hp": 35,
+        "attack": 55,
+        "defense": 40,
+        "special-attack": 50,
+        "special-defense": 50,
+        "speed": 90
+      },
+      "type": "electric",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+      "name": "pikachu",
+      "base_experience": 112,
+      "height": 4,
+      "id": 25,
+      "values": {
+        "top": 8,
+        "right": "A",
+        "bottom": 9,
+        "left": 6
+      }
+    },
+    {
+      "abilities": [
+        "overgrow",
+        "chlorophyll"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 49,
+        "defense": 49,
+        "special-attack": 65,
+        "special-defense": 65,
+        "speed": 45
+      },
+      "type": "grass",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      "name": "bulbasaur",
+      "base_experience": 64,
+      "height": 7,
+      "id": 1,
+      "values": {
+        "top": 8,
+        "right": 4,
+        "bottom": 2,
+        "left": 7
+      }
+    },
+    {
+      "abilities": [
+        "blaze",
+        "solar-power"
+      ],
+      "stats": {
+        "hp": 39,
+        "attack": 52,
+        "defense": 43,
+        "special-attack": 60,
+        "special-defense": 50,
+        "speed": 65
+      },
+      "type": "fire",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+      "name": "charmander",
+      "base_experience": 62,
+      "height": 6,
+      "id": 4,
+      "values": {
+        "top": 7,
+        "right": 6,
+        "bottom": 1,
+        "left": 4
+      }
+    }
+  ];
 
 const App = () => {
-    const descr_1 = 'Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.';
-    const descr_2 = 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).';
-    const descr_3 = 'Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur", и занялся его поисками в классической латинской литературе. В результате он нашёл неоспоримый первоисточник Lorem Ipsum в разделах 1.10.32 и 1.10.33 книги "de Finibus Bonorum et Malorum" ("О пределах добра и зла"), написанной Цицероном в 45 году н.э. Этот трактат по теории этики был очень популярен в эпоху Возрождения. Первая строка Lorem Ipsum, "Lorem ipsum dolor sit amet..", происходит от одной из строк в разделе 1.10.32';
-
     const colorRed = {color: 'red'};
     const colorYellow = {color: 'yellow'};
 
@@ -23,20 +156,30 @@ const App = () => {
             />
             <Layout 
                 title='Заголовок - 1' 
-                descr={descr_1}
-            />
+            >
+                <p>In the game two players face off against one another, one side playing as "blue", the other as "red" on a 3x3 grid.
+                    Each player has five cards in a hand and the aim is to capture the opponent's cards by turning them into the player's own color of red or blue.</p>
+               
+            </Layout>
             <Layout 
                 title='Заголовок - 2' 
-                descr={descr_2} 
                 urlBg={img1} 
                 colorBg={colorRed}
-            />
+            >
+                <p>To win, a majority of the total ten cards played (including the one card that is not placed on the board) must be of the player's card color. To do this, the player must capture cards by placing a card adjacent to an opponent's card whereupon the 'ranks' of the sides where the two cards touch will be compared.</p>
+                <p>If the rank of the opponent's card is higher than the player's card, the player's card will be captured and turned into the opponent's color. If the player's rank is higher, the opponent's card will be captured and changed into the player's color instead. </p>
+            </Layout>    
             <Layout 
                 title='Заголовок - 3' 
-                descr={descr_3} 
                 urlBg={img2} 
                 colorBg={colorYellow}
-            />
+            >
+                <div className="flex">
+                    {
+                        POCKEMONS.map((item) => <PockemonCard key={item.id} id={item.id} name={item.name} img={item.img} type={item.type} values={item.values}/>)
+                    }
+                </div>
+            </Layout>
             <Footer />
         </>
     );
